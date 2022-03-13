@@ -11,7 +11,8 @@ const loader = require('sass-loader');
 const config = {
     
     entry: {
-        main: './src/assets/js/main.js'
+        main: './src/assets/js/main.js',
+        flex: './src/assets/js/flex.js'
     },
 
     output: {

@@ -65,6 +65,14 @@ const config = {
             minify: false,
         }),
 
+        new HtmlWebpackPlugin({
+            title: "Flex Practice [Dev Version]",
+            filename: "flexbox.html",
+            template: "./src/templates/flexbox.html",
+            chunks: ['flex'],
+            minify: false,
+        }),
+
         
 
         
