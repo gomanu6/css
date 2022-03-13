@@ -10,6 +10,13 @@ const TerserPlugin = require('terser-webpack-plugin');
 const common = require('./webpack.common.config');
 
 const config = {
+    mode: "production",
+
+    output: {
+        
+        path: path.resolve(__dirname, 'build'),
+        filename: "assets/js/[name]-[contenthash].js"
+    },
 
     module: {
         rules: [
@@ -26,35 +33,37 @@ const config = {
             },
         ],
 
-        plugins: [
-            new MiniCssExtractPlugin({
-                filename: 'assets/css/[name].css',
-                chunkFilename: 'assets/css/[id].[contenthash].css',
-            }),
-    
-            new HtmlWebpackPlugin({
-                title: "Main page",
-                filename: "index.html",
-                template: "./src/templates/main.html",
-                chunks: ['main'],
-                minify: true,
-            }),
-    
-            
-    
-            
-        ],
+        
+    },
 
-        optimization: {
-            splitChunks: {
-                chunks: 'all'
-            },
-            minimizer: [
-                new CssMinimizer,
-                new TerserPlugin
-            ]
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'assets/css/[name]-[hash].css',
+            chunkFilename: 'assets/css/[id].[contenthash].css',
+        }),
+
+        new HtmlWebpackPlugin({
+            title: "Main page",
+            filename: "index.html",
+            template: "./src/templates/main.html",
+            chunks: ['main'],
+            minify: true,
+        }),
+
+        
+
+        
+    ],
+
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
         },
-    }
+        minimizer: [
+            new CssMinimizer,
+            new TerserPlugin
+        ]
+    },
 
 
 }

@@ -12,11 +12,17 @@ const common = require('./webpack.common.config');
 const config = {
     mode: "development",
     devtool: 'source-map',
+
+    output: {
+        
+        path: path.resolve(__dirname, 'dev'),
+        filename: "assets/js/[name].js"
+    },
     
     devServer: {
         port: 3030,
         hot: true,
-        static: path.resolve( __dirname, 'dist'),
+        static: path.resolve( __dirname, 'dev'),
     },
 
     module: {
@@ -52,7 +58,7 @@ const config = {
         }),
 
         new HtmlWebpackPlugin({
-            title: "Main page",
+            title: "Main page [Dev Version]",
             filename: "index.html",
             template: "./src/templates/main.html",
             chunks: ['main'],

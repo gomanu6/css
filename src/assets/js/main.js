@@ -1,3 +1,3 @@
-alert('Loaded');
+// alert('Loaded');
 
 import '../css/sass/main.sass'
